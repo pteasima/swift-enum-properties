@@ -29,8 +29,7 @@ public class EnumPropertyRewriter: SyntaxRewriter {
       .filter { !self.stack.last!.variables.contains($0.identifier.withoutTrivia().description) }
 
     guard
-      !enumCases.isEmpty,
-      allEnumCases.contains(where: { $0.associatedValue != nil })
+      !enumCases.isEmpty
       else { return node }
 
     let isPublic = node.modifiers?

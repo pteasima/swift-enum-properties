@@ -4,17 +4,35 @@ enum CodingKeys: String, CodingKey {
   case email
 
   var id: Void? {
-    guard case .id = self else { return nil }
-    return ()
+    get {
+      guard case .id = self else { return nil }
+      return ()
+    }
+    set {
+      guard let _ = newValue else { return }
+      self = .id
+    }
   }
 
   var name: Void? {
-    guard case .name = self else { return nil }
-    return ()
+    get {
+      guard case .name = self else { return nil }
+      return ()
+    }
+    set {
+      guard let _ = newValue else { return }
+      self = .name
+    }
   }
 
   var email: Void? {
-    guard case .email = self else { return nil }
-    return ()
+    get {
+      guard case .email = self else { return nil }
+      return ()
+    }
+    set {
+      guard let _ = newValue else { return }
+      self = .email
+    }
   }
 }

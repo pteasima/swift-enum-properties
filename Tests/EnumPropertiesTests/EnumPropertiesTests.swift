@@ -11,8 +11,14 @@ final class EnumPropertiesTests: XCTestCase {
     let enumProperty0 = makeEnumProperty(forCase: enumCase0, leadingSpaces: 0, indentBy: 4)
     _assertInlineSnapshot(matching: enumProperty0, as: .syntax, with: """
     var cancelled: Void? {
-        guard case .cancelled = self else { return nil }
-        return ()
+        get {
+            guard case .cancelled = self else { return nil }
+            return ()
+        }
+        set {
+            guard let _ = newValue else { return }
+            self = .cancelled
+        }
     }
     """)
 
@@ -47,7 +53,7 @@ final class EnumPropertiesTests: XCTestCase {
             return value
         }
         set {
-            guard case .valid = self, let newValue = newValue else { return }
+            guard let newValue = newValue else { return }
             self = .valid(newValue)
         }
     }
@@ -104,7 +110,7 @@ final class EnumPropertiesTests: XCTestCase {
             return value
         }
         set {
-            guard case .element = self, let newValue = newValue else { return }
+            guard let newValue = newValue else { return }
             self = .element(tag: newValue.0, attributes: newValue.1, children: newValue.2)
         }
     }
@@ -293,18 +299,36 @@ final class EnumPropertiesTests: XCTestCase {
       case email
     
       var id: Void? {
-        guard case .id = self else { return nil }
-        return ()
+        get {
+          guard case .id = self else { return nil }
+          return ()
+        }
+        set {
+          guard let _ = newValue else { return }
+          self = .id
+        }
       }
     
       var name: Void? {
-        guard case .name = self else { return nil }
-        return ()
+        get {
+          guard case .name = self else { return nil }
+          return ()
+        }
+        set {
+          guard let _ = newValue else { return }
+          self = .name
+        }
       }
     
       var email: Void? {
-        guard case .email = self else { return nil }
-        return ()
+        get {
+          guard case .email = self else { return nil }
+          return ()
+        }
+        set {
+          guard let _ = newValue else { return }
+          self = .email
+        }
       }
     }
     """)

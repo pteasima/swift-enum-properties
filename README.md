@@ -1,6 +1,6 @@
 Unlike https://github.com/pointfreeco/swift-enum-properties , this version:
-- also generates enum properties for enums with no associated values (TODO)
-- generates "inject" setter as opposed to "trySet" (force writes the value even if we're currently in a different case) (TODO)
+- also generates enum properties for enums with no associated values
+- generates "inject" setter as opposed to "trySet" (force writes the value even if we're currently in a different case)
 
 Future considerations:
 - possibly use https://twitter.com/pteasima/status/1154225329944371200?s=20 to get rid of the optional on the setter. Unclear if its worth the hassle.
